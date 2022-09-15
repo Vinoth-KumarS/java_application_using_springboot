@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="869bcaa3-592e-4154-af74-79ea61acf58d" name="employeeDB Mapping">
+      <data-sources db="2532118c-e30b-4e44-8541-24594cd2047e" />
+      <scope>
+        <node kind="schema" qname="employeeDB" />
+      </scope>
+    </mapping>
+  </component>
+</project>
