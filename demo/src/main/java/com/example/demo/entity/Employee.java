@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 
 
@@ -19,9 +20,9 @@ public class Employee {
     private String lastName;
 
     @OneToMany(mappedBy = "id")
-    public List<EmpAddress> empAddresses;
+    public Set<EmpAddress> empAddresses;
 
-    public Employee(String firstName, String lastName, List<EmpAddress> empAddress) {
+    public Employee(String firstName, String lastName, Set<EmpAddress> empAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.empAddresses = empAddress;
@@ -31,11 +32,11 @@ public class Employee {
 
     }
 
-    public List<EmpAddress> getEmpAddresses() {
+    public Set<EmpAddress> getEmpAddresses() {
         return empAddresses;
     }
 
-    public void setEmpAddresses(List<EmpAddress> empAddresses) {
+    public void setEmpAddresses(Set<EmpAddress> empAddresses) {
         this.empAddresses = empAddresses;
     }
 
@@ -58,10 +59,11 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "EmployeeEntity{" +
-                "id='" + id + '\'' +
-                "firstName='" + firstName + '\'' +
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", empAddresses=" + empAddresses +
                 '}';
     }
 }

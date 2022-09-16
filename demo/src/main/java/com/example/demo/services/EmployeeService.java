@@ -5,25 +5,36 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import com.example.demo.repository.EmpAddressRepository;
 import com.example.demo.repository.EmployeeRepository;
-
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeService {
     final
     EmployeeRepository employeeRepository;
+    final
+    EmpAddressRepository empAddressRepository;
 
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository, EmpAddressRepository empAddressRepository) {
         this.employeeRepository = employeeRepository;
+        this.empAddressRepository = empAddressRepository;
     }
+
 
     public List<Employee> getAllEmployee(){
         return employeeRepository.findAll();
     }
     public Employee addEmp(Employee emp) {
-        return employeeRepository.save(emp);
+
+  Employee employee =  employeeRepository.save(emp);
+        employee.empAddresses.forEach((empAdd) -> {
+            empAdd.empId = emp.id;
+             empAddressRepository.save(empAdd);
+        });
+
+return employee;
     }
 
     public Employee editEmp(Employee e) {

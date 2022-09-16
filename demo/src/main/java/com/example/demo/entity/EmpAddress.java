@@ -1,12 +1,14 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
 public class EmpAddress {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     public Integer id;
 
@@ -15,15 +17,33 @@ public class EmpAddress {
     @Column(name = "country")
     public String country;
 
-    @ManyToOne
-    @JoinColumn(name = "emp_id", nullable = false)
-    public Employee employee;
+    @Column(name = "emp_id")
+    public int empId;
 
     public EmpAddress(String city, String country) {
         this.city = city;
         this.country = country;
     }
 
+    public EmpAddress(Set<EmpAddress> empAddresses) {
+
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
+    }
     public EmpAddress() {
 
     }
@@ -44,5 +64,12 @@ public class EmpAddress {
         this.country = country;
     }
 
-
+    @Override
+    public String toString() {
+        return "EmpAddress{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entity.EmpAddress;
 import com.example.demo.entity.Employee;
+import com.example.demo.services.EmpAddressService;
 import com.example.demo.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +14,11 @@ public class EmployeeController {
 
     final
     EmployeeService employeeService;
+    EmpAddressService empAddressService;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService, EmpAddressService empAddressService) {
         this.employeeService = employeeService;
+        this.empAddressService = empAddressService;
     }
 
     @GetMapping(path = "/get/all")
