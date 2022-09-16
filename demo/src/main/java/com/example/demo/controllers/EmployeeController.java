@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-import com.example.demo.entity.EmpAddress;
 import com.example.demo.entity.Employee;
 import com.example.demo.services.EmpAddressService;
 import com.example.demo.services.EmployeeService;

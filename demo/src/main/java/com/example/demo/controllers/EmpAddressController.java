@@ -23,6 +23,10 @@ public class EmpAddressController {
     public List<EmpAddress> getAll(){
         return  empAddressService.getAllAddress();
     }
+    @GetMapping(path = "/getAddress")
+    public List<EmpAddress> getAddressByEmpId(@RequestParam int empId){
+        return  empAddressService.getAddressByEmpId(empId);
+    }
 
 
 }

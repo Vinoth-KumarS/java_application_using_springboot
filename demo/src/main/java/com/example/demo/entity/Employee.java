@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 
-import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -25,7 +24,7 @@ public class Employee {
     public Employee(String firstName, String lastName, Set<EmpAddress> empAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.empAddresses = empAddress;
+        this.empAddresses=empAddress;
     }
 
     public Employee() {

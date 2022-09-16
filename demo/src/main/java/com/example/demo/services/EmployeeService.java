@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.entity.EmpAddress;
 import com.example.demo.entity.Employee;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +25,17 @@ public class EmployeeService {
 
 
     public List<Employee> getAllEmployee(){
-        return employeeRepository.findAll();
+        List<EmpAddress> empAddress = empAddressRepository.findAll();
+        List<Employee> employees = employeeRepository.findAll();
+
+        employees.forEach((emp)-> {
+            empAddress.forEach((empAdd) -> {
+                if (emp.id == empAdd.empId) {
+                    emp.empAddresses.add(empAdd);
+                }
+            });
+        });
+        return employees;
     }
     public Employee addEmp(Employee emp) {
 
